@@ -1,0 +1,107 @@
+<svg width="300" height="150" viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+  <!-- Logo Circle Background with tech gradient -->
+  <defs>
+    <linearGradient id="circleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#1E40AF;stop-opacity:0.9"/>
+    </linearGradient>
+    <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60A5FA"/>
+      <stop offset="100%" style="stop-color:#2563EB"/>
+    </linearGradient>
+  </defs>
+  
+  <circle cx="150" cy="60" r="35" fill="url(#circleGradient)" stroke="#1E40AF" stroke-width="2"/>
+  
+  <!-- Tech Laptop Icon -->
+  <g transform="translate(150, 60)">
+    <!-- Laptop Base -->
+    <rect x="-18" y="2" width="36" height="12" rx="2" 
+          fill="url(#iconGradient)" 
+          stroke="#FFFFFF" 
+          stroke-width="1.5"/>
+    
+    <!-- Laptop Screen -->
+    <rect x="-16" y="-12" width="32" height="18" rx="2" 
+          fill="url(#iconGradient)" 
+          stroke="#FFFFFF" 
+          stroke-width="1.5"/>
+    
+    <!-- Screen Display -->
+    <rect x="-14" y="-10" width="28" height="14" rx="1" 
+          fill="#1E293B" 
+          stroke="none"/>
+    
+    <!-- Code on Screen -->
+    <g font-family="monospace" font-size="3" fill="#10B981">
+      <text x="-12" y="-7" font-size="2.5">{'</text>
+      <text x="-8" y="-7" font-size="2.5">GIRISH</text>
+      <text x="-12" y="-4" font-size="2.5">  TECH:</text>
+      <text x="-12" y="-1" font-size="2.5">  'innovation'</text>
+      <text x="-12" y="2" font-size="2.5">}</text>
+    </g>
+    
+    <!-- Keyboard -->
+    <g fill="#FFFFFF" opacity="0.8">
+      <!-- Keyboard rows -->
+      <rect x="-15" y="4" width="30" height="1.5" rx="0.5"/>
+      <rect x="-15" y="6" width="30" height="1.5" rx="0.5"/>
+      <rect x="-15" y="8" width="30" height="1.5" rx="0.5"/>
+      <rect x="-15" y="10" width="30" height="1.5" rx="0.5"/>
+      
+      <!-- Individual keys representation -->
+      <g opacity="0.6">
+        <rect x="-14" y="4.2" width="2" height="1.1" rx="0.2"/>
+        <rect x="-11" y="4.2" width="2" height="1.1" rx="0.2"/>
+        <rect x="-8" y="4.2" width="2" height="1.1" rx="0.2"/>
+        <rect x="-5" y="4.2" width="2" height="1.1" rx="0.2"/>
+        <rect x="-2" y="4.2" width="2" height="1.1" rx="0.2"/>
+        <rect x="1" y="4.2" width="2" height="1.1" rx="0.2"/>
+        <rect x="4" y="4.2" width="2" height="1.1" rx="0.2"/>
+        <rect x="7" y="4.2" width="2" height="1.1" rx="0.2"/>
+        <rect x="10" y="4.2" width="2" height="1.1" rx="0.2"/>
+        <rect x="13" y="4.2" width="1.5" height="1.1" rx="0.2"/>
+      </g>
+    </g>
+    
+    <!-- Trackpad -->
+    <rect x="-4" y="8" width="8" height="4" rx="1" 
+          fill="none" 
+          stroke="#FFFFFF" 
+          stroke-width="0.8" 
+          opacity="0.7"/>
+    
+    <!-- Power LED -->
+    <circle cx="14" cy="5" r="0.8" fill="#10B981" opacity="0.9"/>
+    
+    <!-- Circuit Board Pattern on Base -->
+    <g stroke="#FFFFFF" stroke-width="0.5" fill="none" opacity="0.4">
+      <!-- Circuit traces -->
+      <line x1="-16" y1="6" x2="-12" y2="6"/>
+      <line x1="12" y1="6" x2="16" y2="6"/>
+      <line x1="-16" y1="10" x2="-12" y2="10"/>
+      <line x1="12" y1="10" x2="16" y2="10"/>
+      
+      <!-- Circuit nodes -->
+      <circle cx="-12" cy="6" r="0.5" fill="#FFFFFF"/>
+      <circle cx="12" cy="6" r="0.5" fill="#FFFFFF"/>
+      <circle cx="-12" cy="10" r="0.5" fill="#FFFFFF"/>
+      <circle cx="12" cy="10" r="0.5" fill="#FFFFFF"/>
+    </g>
+  </g>
+  
+  <!-- Text with Tech Font -->
+  <text x="150" y="125" 
+        font-family="'Courier New', monospace" 
+        font-size="24" 
+        font-weight="bold" 
+        text-anchor="middle" 
+        fill="#2563EB" 
+        letter-spacing="2px">GIRISH TECH</text>
+  
+  <!-- Tech accent dots -->
+  <circle cx="80" cy="125" r="2" fill="#3B82F6" opacity="0.6"/>
+  <circle cx="220" cy="125" r="2" fill="#3B82F6" opacity="0.6"/>
+  <circle cx="85" cy="120" r="1" fill="#60A5FA" opacity="0.8"/>
+  <circle cx="215" cy="120" r="1" fill="#60A5FA" opacity="0.8"/>
+</svg>
