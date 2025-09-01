@@ -2,24 +2,31 @@ import {
   QueryClient,
   QueryClientProvider,
   Provider,
-  ThemeProvider,
   store,
   RouterProvider,
   route,
   ReactQueryDevtools,
 } from "./index";
+import { ToastContainer } from "react-toastify";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+      retry: false,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
         <Provider store={store}>
-          <ThemeProvider>
-            <RouterProvider router={route} />
-          </ThemeProvider>
+          <RouterProvider router={route} />
         </Provider>
+        <ToastContainer />
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </>
