@@ -10,3 +10,7 @@ export interface Product {
     count: number;
   };
 }
+
+export interface CartProduct extends Omit<Product, "description" | "rate"> {
+  quantity: number;
+}

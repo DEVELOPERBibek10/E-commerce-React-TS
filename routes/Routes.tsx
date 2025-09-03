@@ -1,6 +1,6 @@
 import Layout from "../src/Components/Layout";
 import Shop from "../src/Pages/Shop";
-import Cart from "../src/Pages/Cart";
+import Cart from "../src/Pages/CartPage";
 import Details from "../src/Pages/Details";
 import {
   createBrowserRouter,

@@ -1,8 +1,17 @@
 import { ShoppingCart } from "lucide-react";
 import { Button } from "./ui/button";
 import { NavigationMenu } from "./ui/navigation-menu";
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import type { RootState } from "@/store";
 
 const Header = () => {
+  const totalQuantity = useSelector(
+    (state: RootState) => state.Cart.totalQuantity
+  );
+
+  console.log(typeof totalQuantity);
+
   return (
     <nav
       id="navBar"
@@ -18,12 +27,22 @@ const Header = () => {
               className="pr-12 
             flex justify-center items-center"
             >
-              <Button
-                variant={"ghost"}
-                className=" h-[54px] w-[60px] cursor-pointer"
-              >
-                <ShoppingCart className="size-full" />
-              </Button>
+              <NavLink className="outline-none" to={"/cart"}>
+                <Button
+                  variant={"ghost"}
+                  className=" h-[54px] w-[60px] cursor-pointer relative"
+                >
+                  {totalQuantity ? (
+                    <div className="absolute w-5 h-5 bg-red-500 rounded-full text-white -top-0.5 right-0 text-center">
+                      {totalQuantity}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+
+                  <ShoppingCart className="size-full" />
+                </Button>
+              </NavLink>
             </div>
           </div>
         </div>

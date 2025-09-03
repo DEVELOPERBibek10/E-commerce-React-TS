@@ -1,8 +1,16 @@
-import { Eye, Heart, ShoppingCart, Star } from "lucide-react";
+import { Eye, Heart, ShoppingCart, Star, Trash } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import type { Product } from "@/types";
+import { useDispatch } from "react-redux";
+import {
+  addToCart,
+  removeFromCart,
+  setTotalQuantity,
+} from "@/Features/cartSlice";
+import { useSelector } from "react-redux";
+import type { RootState } from "@/store";
 
 const ProductCard = ({
   category,
@@ -11,7 +19,20 @@ const ProductCard = ({
   image,
   description,
   title,
+  id,
 }: Product) => {
+  const cart = useSelector((state: RootState) => state.Cart.cartItems);
+  const dispatch = useDispatch();
+  const cartStatus = cart.some((cartItem) => cartItem.id === id);
+  const handleAddToCart = (ProductData: Product) => {
+    dispatch(addToCart(ProductData));
+    dispatch(setTotalQuantity());
+  };
+  const handleRemoveFromCart = (itemId: Record<string, number>) => {
+    dispatch(removeFromCart({ id: itemId.id }));
+    dispatch(setTotalQuantity());
+  };
+
   return (
     <Card className="w-[350px] max-w-sm">
       <div className="relative p-3 box-border">
@@ -41,10 +62,36 @@ const ProductCard = ({
         </div>
 
         <div className="flex items-center space-x-2 pt-4">
-          <Button className="w-[75%] cursor-pointer">
-            <ShoppingCart className="mr-2 h-4 w-6" />
-            Add to Cart
-          </Button>
+          {!cartStatus ? (
+            <Button
+              onClick={() =>
+                handleAddToCart({
+                  id: id,
+                  title: title,
+                  price: price,
+                  image: image,
+                  category: category,
+                })
+              }
+              className="w-[75%] cursor-pointer"
+            >
+              <ShoppingCart className="mr-2 h-4 w-6" />
+              Add to Cart
+            </Button>
+          ) : (
+            <Button
+              variant={"destructive"}
+              onClick={() =>
+                handleRemoveFromCart({
+                  id: id,
+                })
+              }
+              className="w-[75%] cursor-pointer"
+            >
+              <Trash className="mr-2 h-4 w-6" />
+              Remove from cart
+            </Button>
+          )}
           <Button className="cursor-pointer" variant="secondary" size="icon">
             <Heart className="h-5 w-5" />
           </Button>
