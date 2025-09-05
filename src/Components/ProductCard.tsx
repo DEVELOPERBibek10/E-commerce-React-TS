@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import {
   addToCart,
   removeFromCart,
+  setCartBill,
   setTotalQuantity,
 } from "@/Features/cartSlice";
 import { useSelector } from "react-redux";
@@ -27,10 +28,12 @@ const ProductCard = ({
   const handleAddToCart = (ProductData: Product) => {
     dispatch(addToCart(ProductData));
     dispatch(setTotalQuantity());
+    dispatch(setCartBill());
   };
   const handleRemoveFromCart = (itemId: Record<string, number>) => {
     dispatch(removeFromCart({ id: itemId.id }));
     dispatch(setTotalQuantity());
+    dispatch(setCartBill());
   };
 
   return (

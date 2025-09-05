@@ -4,13 +4,13 @@ import { NavigationMenu } from "./ui/navigation-menu";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/store";
+import Dropdown from "./Dropdown";
 
 const Header = () => {
   const totalQuantity = useSelector(
     (state: RootState) => state.Cart.totalQuantity
   );
-
-  console.log(typeof totalQuantity);
+  const { user } = useSelector((state: RootState) => state.Auth);
 
   return (
     <nav
@@ -25,9 +25,12 @@ const Header = () => {
           <div>
             <div
               className="pr-12 
-            flex justify-center items-center"
+            flex justify-end gap-10 items-center w-[400px]"
             >
-              <NavLink className="outline-none" to={"/cart"}>
+              <NavLink
+                className="outline-none flex items-center gap-5"
+                to={"/cart"}
+              >
                 <Button
                   variant={"ghost"}
                   className=" h-[54px] w-[60px] cursor-pointer relative"
@@ -43,6 +46,13 @@ const Header = () => {
                   <ShoppingCart className="size-full" />
                 </Button>
               </NavLink>
+              {!user ? (
+                <NavLink to="/login">
+                  <Button>Login</Button>
+                </NavLink>
+              ) : (
+                <Dropdown />
+              )}
             </div>
           </div>
         </div>

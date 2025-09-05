@@ -9,9 +9,16 @@ interface cartData {
 }
 
 const initialState: cartData = {
-  cartItems: [],
-  cartBill: { subTotal: 0, shipping: 0, tax: 0, total: 0 },
-  totalQuantity: 0,
+  cartItems: JSON.parse(localStorage.getItem("cartItems") || "[]"),
+  cartBill: Object(
+    JSON.parse(
+      localStorage.getItem("cartBill") ||
+        "{ subTotal: 0; shipping: 0; tax: 0; total: 0 }"
+    )
+  ),
+  totalQuantity: Number(
+    JSON.parse(localStorage.getItem("totalQuantity") || "0")
+  ),
 };
 
 export const cartSlice = createSlice({
@@ -53,9 +60,26 @@ export const cartSlice = createSlice({
         return total + cartItem.quantity;
       }, 0);
     },
+    setCartBill: (state) => {
+      state.cartBill.subTotal = state.cartItems.reduce(
+        (subTotal, currentItem) => {
+          return subTotal + currentItem.price * currentItem.quantity;
+        },
+        0
+      );
+      state.cartBill.shipping = state.cartBill.subTotal * 0.2;
+      state.cartBill.tax = (state.cartBill.subTotal * 13) / 100;
+      state.cartBill.total =
+        state.cartBill.subTotal + state.cartBill.shipping + state.cartBill.tax;
+    },
   },
 });
 
-export const { addToCart, removeFromCart, setQuantity, setTotalQuantity } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  setQuantity,
+  setTotalQuantity,
+  setCartBill,
+} = cartSlice.actions;
 export default cartSlice.reducer;
