@@ -17,15 +17,16 @@ const Dropdown = () => {
 
   return (
     <DropdownMenu dir={"ltr"}>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger asChild className="cursor-pointer">
         <div className="rounded-full w-[45px] h-[45px] text-lg flex items-center justify-center font-semibold border-muted border-2">
           {user?.name.charAt(0)}
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuLabel>Username: {user?.name}</DropdownMenuLabel>
+        <DropdownMenuLabel>Username : {user?.name}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem
+          className="cursor-pointer"
           onClick={() => {
             dispatch(logoutUser());
           }}

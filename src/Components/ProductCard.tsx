@@ -12,6 +12,7 @@ import {
 } from "@/Features/cartSlice";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/store";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({
   category,
@@ -24,6 +25,8 @@ const ProductCard = ({
 }: Product) => {
   const cart = useSelector((state: RootState) => state.Cart.cartItems);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const cartStatus = cart.some((cartItem) => cartItem.id === id);
   const handleAddToCart = (ProductData: Product) => {
     dispatch(addToCart(ProductData));
@@ -34,6 +37,10 @@ const ProductCard = ({
     dispatch(removeFromCart({ id: itemId.id }));
     dispatch(setTotalQuantity());
     dispatch(setCartBill());
+  };
+
+  const handleProductDetail = async (id: number) => {
+    navigate(`/product/${id}`);
   };
 
   return (
@@ -98,7 +105,12 @@ const ProductCard = ({
           <Button className="cursor-pointer" variant="secondary" size="icon">
             <Heart className="h-5 w-5" />
           </Button>
-          <Button className="cursor-pointer" variant="secondary" size="icon">
+          <Button
+            onClick={() => handleProductDetail(id)}
+            className="cursor-pointer"
+            variant="secondary"
+            size="icon"
+          >
             <Eye className="h-5 w-5" />
           </Button>
         </div>

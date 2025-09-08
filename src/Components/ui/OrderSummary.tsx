@@ -3,14 +3,19 @@ import { Card, CardContent } from "@/Components/ui/card";
 import type { RootState } from "@/store";
 import { ChevronRight, Info } from "lucide-react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-export function OrderSummary() {
+interface orderSummayProp {
+  finalPay?: boolean;
+}
+
+export function OrderSummary({ finalPay }: orderSummayProp) {
   const { total, tax, shipping, subTotal } = useSelector(
     (state: RootState) => state.Cart.cartBill
   );
 
   return (
-    <Card className="p-6 sticky top-4">
+    <Card className="p-6 sticky top-4 w-full">
       <CardContent className="p-0">
         <h2 className="text-xl font-semibold mb-6">Order summary</h2>
 
@@ -46,11 +51,14 @@ export function OrderSummary() {
             <span>Order total</span>
             <span>${Number(total).toFixed(2)}</span>
           </div>
-
-          <Button className="w-full cursor-pointer mt-6 bg-black hover:bg-black/90 text-white">
-            Checkout
-            <ChevronRight className="ml-2 h-4 w-4" />
-          </Button>
+          {!finalPay && (
+            <Link to="/pay">
+              <Button className="w-full cursor-pointer mt-6 bg-black hover:bg-black/90 text-white">
+                Checkout
+                <ChevronRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          )}
         </div>
       </CardContent>
     </Card>

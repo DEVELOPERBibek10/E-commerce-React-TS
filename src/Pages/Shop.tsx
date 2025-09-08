@@ -1,6 +1,6 @@
 import ProductCard from "@/Components/ProductCard";
 import ProductCartSkeleton from "@/Components/ProductCartSkeleton";
-import { useProducts } from "@/Hooks/useFakeStore";
+import { useProducts } from "@/Hooks/useProducts";
 import type { Product } from "@/types";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/Components/ui/tabs";
 import { toast } from "react-toastify";

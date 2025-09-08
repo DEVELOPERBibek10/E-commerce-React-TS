@@ -10,7 +10,6 @@ export const loginUser = createAsyncThunk<User, void>(
       if (!session) {
         throw Error("Session not found");
       }
-      console.log(session);
       return session;
     } catch (error: unknown) {
       if (error instanceof Error) {

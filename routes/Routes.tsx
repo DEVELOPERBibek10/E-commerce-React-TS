@@ -1,7 +1,7 @@
 import AuthLayout from "../src/Components/Layout/AuthLayout";
 import Shop from "../src/Pages/Shop";
 import Cart from "../src/Pages/CartPage";
-import Details from "../src/Pages/Details";
+import ProductDetails from "../src/Pages/ProductDetailPage";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -17,7 +17,7 @@ export const route = createBrowserRouter(
     <Route element={<Layout />}>
       <Route path="/" element={<Shop />} />
       <Route path="/cart" element={<Cart />} />
-      <Route path="/product/:id" element={<Details />} />
+      <Route path="/product/:id" element={<ProductDetails />} />
     </Route>,
     <Route element={<AuthLayout />}>
       <Route path="/login" element={<Login />} />

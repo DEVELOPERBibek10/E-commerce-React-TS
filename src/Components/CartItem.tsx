@@ -61,12 +61,12 @@ export function CartItem({
               onClick={handleCartOperation}
               className="flex justify-center gap-3 items-center w-fit px-6 py-3 rounded-lg border-muted border-2"
             >
-              <Button id="add" size={"icon"} className="cursor-pointer">
-                <Plus />
-              </Button>
-              <span>{quantity}</span>
               <Button size={"icon"} className="cursor-pointer">
                 <Minus />
+              </Button>
+              <span>{quantity}</span>
+              <Button id="add" size={"icon"} className="cursor-pointer">
+                <Plus />
               </Button>
             </div>
 

@@ -13,7 +13,7 @@ const initialState: cartData = {
   cartBill: Object(
     JSON.parse(
       localStorage.getItem("cartBill") ||
-        "{ subTotal: 0; shipping: 0; tax: 0; total: 0 }"
+        '{"subTotal": 0, "shipping": 0, "tax": 0, "total": 0}'
     )
   ),
   totalQuantity: Number(
@@ -72,6 +72,12 @@ export const cartSlice = createSlice({
       state.cartBill.total =
         state.cartBill.subTotal + state.cartBill.shipping + state.cartBill.tax;
     },
+    resetCart: (state) => {
+      state.cartItems = [];
+      state.cartBill = { subTotal: 0, shipping: 0, tax: 0, total: 0 };
+      state.totalQuantity = 0;
+      localStorage.clear();
+    },
   },
 });
 
@@ -81,5 +87,6 @@ export const {
   setQuantity,
   setTotalQuantity,
   setCartBill,
+  resetCart,
 } = cartSlice.actions;
 export default cartSlice.reducer;
