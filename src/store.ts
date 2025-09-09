@@ -13,7 +13,10 @@ store.subscribe(() => {
   const state = store.getState();
   localStorage.setItem("cartItems", JSON.stringify(state.Cart.cartItems));
   localStorage.setItem("cartBill", JSON.stringify(state.Cart.cartBill));
-  localStorage.setItem("totalQuantity", JSON.stringify(state.Cart.totalQuantity));
+  localStorage.setItem(
+    "totalQuantity",
+    JSON.stringify(state.Cart.totalQuantity)
+  );
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

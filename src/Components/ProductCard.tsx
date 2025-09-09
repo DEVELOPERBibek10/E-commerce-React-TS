@@ -1,4 +1,4 @@
-import { Eye, Heart, ShoppingCart, Star, Trash } from "lucide-react";
+import { Eye, ShoppingCart, Star, Trash } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
@@ -71,7 +71,7 @@ const ProductCard = ({
           </Badge>
         </div>
 
-        <div className="flex items-center space-x-2 pt-4">
+        <div className="flex items-center gap-3 space-x-2 pt-4">
           {!cartStatus ? (
             <Button
               onClick={() =>
@@ -83,7 +83,7 @@ const ProductCard = ({
                   category: category,
                 })
               }
-              className="w-[75%] cursor-pointer"
+              className="w-[85%] cursor-pointer"
             >
               <ShoppingCart className="mr-2 h-4 w-6" />
               Add to Cart
@@ -96,15 +96,13 @@ const ProductCard = ({
                   id: id,
                 })
               }
-              className="w-[75%] cursor-pointer"
+              className="w-[85%] cursor-pointer"
             >
               <Trash className="mr-2 h-4 w-6" />
               Remove from cart
             </Button>
           )}
-          <Button className="cursor-pointer" variant="secondary" size="icon">
-            <Heart className="h-5 w-5" />
-          </Button>
+
           <Button
             onClick={() => handleProductDetail(id)}
             className="cursor-pointer"

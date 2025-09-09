@@ -1,7 +1,6 @@
 import { Button } from "@/Components/ui/button";
 import { Card } from "@/Components/ui/card";
-import { Heart, ShoppingCart, Star, Trash } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { ShoppingCart, Star, Trash } from "lucide-react";
 import { useProductDetail } from "@/Hooks/useProducts";
 import { useParams } from "react-router-dom";
 import { Badge } from "@/Components/ui/badge";
@@ -82,7 +81,7 @@ function ProductDetailPage() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3">
+          <div className="flex flex-col sm:flex-row gap-4">
             {!cartStatus ? (
               <Button
                 size="lg"
@@ -115,15 +114,6 @@ function ProductDetailPage() {
                 Remove From Cart
               </Button>
             )}
-            <Button
-              variant="outline"
-              size="lg"
-              className={cn(
-                "w-full sm:w-auto sm:px-3 text-red-500 border-red-200"
-              )}
-            >
-              <Heart className={cn("w-5 h-5")} />
-            </Button>
           </div>
 
           {/* Product Description */}

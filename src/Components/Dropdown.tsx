@@ -10,6 +10,7 @@ import type { AppDispatch, RootState } from "@/store";
 import { useSelector } from "react-redux";
 import { logoutUser } from "@/Hooks/useAuth";
 import { useDispatch } from "react-redux";
+import { resetCart } from "@/Features/cartSlice";
 
 const Dropdown = () => {
   const { user } = useSelector((state: RootState) => state.Auth);
@@ -29,6 +30,7 @@ const Dropdown = () => {
           className="cursor-pointer"
           onClick={() => {
             dispatch(logoutUser());
+            dispatch(resetCart());
           }}
         >
           Logout

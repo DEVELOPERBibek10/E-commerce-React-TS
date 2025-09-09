@@ -24,3 +24,32 @@ export interface AuthState {
   loading: boolean;
   error: string | null;
 }
+
+export interface FormRules {
+  required?: string;
+  minLength?: {
+    value: number;
+    message: string;
+  };
+  maxLength?: {
+    value: number;
+    message: string;
+  };
+  pattern?: {
+    value: RegExp;
+    message: string;
+  };
+}
+
+export interface controlObj {
+  firstName: string;
+  lastName: string;
+  streetAddress: string;
+  state: string;
+  city: string;
+  postalCode: string;
+  country: string;
+  cardNumber: string;
+  expiry: string;
+  cvv: string;
+}

@@ -13,13 +13,13 @@ interface DialogBoxProp {
 
 function DialogBox({ onClose }: DialogBoxProp) {
   return (
-    <Dialog>
+    <Dialog open onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Payment Sucessfull!</DialogTitle>
         </DialogHeader>
-        <div className="grid gap-4">
-          <img src="/sucess.gif" alt="sucess" />
+        <div className="grid place-content-center">
+          <img className="mx-auto" src="/success.gif" alt="sucess" />
           <p className="text-green-500">
             Payment successful. Your order is now being processed.
           </p>

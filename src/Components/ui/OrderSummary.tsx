@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/Components/ui/card";
 import type { RootState } from "@/store";
 import { ChevronRight, Info } from "lucide-react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface orderSummayProp {
   finalPay?: boolean;
@@ -13,6 +13,14 @@ export function OrderSummary({ finalPay }: orderSummayProp) {
   const { total, tax, shipping, subTotal } = useSelector(
     (state: RootState) => state.Cart.cartBill
   );
+  const navigate = useNavigate();
+
+  function handleCheckout() {
+    if (total <= 0) {
+      return;
+    }
+    navigate("/pay");
+  }
 
   return (
     <Card className="p-6 sticky top-4 w-full">
@@ -52,12 +60,13 @@ export function OrderSummary({ finalPay }: orderSummayProp) {
             <span>${Number(total).toFixed(2)}</span>
           </div>
           {!finalPay && (
-            <Link to="/pay">
-              <Button className="w-full cursor-pointer mt-6 bg-black hover:bg-black/90 text-white">
-                Checkout
-                <ChevronRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
+            <Button
+              onClick={handleCheckout}
+              className="w-full cursor-pointer mt-6 bg-black hover:bg-black/90 text-white"
+            >
+              Checkout
+              <ChevronRight className="ml-2 h-4 w-4" />
+            </Button>
           )}
         </div>
       </CardContent>

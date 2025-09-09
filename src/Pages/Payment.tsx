@@ -4,7 +4,7 @@ import { OrderSummary } from "@/Components/ui/OrderSummary";
 const Payment = () => {
   return (
     <>
-      <main className="lg:grid gap-10 px-24 py-12">
+      <main className="grid gap-10 px-24 py-12">
         <OrderSummary finalPay={true} />
         <PaymentForm />
       </main>
